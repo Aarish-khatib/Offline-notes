@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#eef2ed">
+    <meta name="description" content="Write, search and back up your notes in your browser.">
+    <title>Offline Notes</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <header class="top">
+      <div class="top-inner">
+        <div class="identity"><span class="mark" aria-hidden="true"></span><h1>Offline Notes</h1></div>
+        <p class="location">Stored on this device</p>
+      </div>
+    </header>
+    <main class="workspace">
+      <aside class="sidebar" aria-label="Your notes">
+        <div class="sidebar-head">
+          <h2>Notes</h2>
+          <button type="button" id="new-note" class="primary" disabled>New note</button>
+        </div>
+        <label class="sr-only" for="search">Search notes</label>
+        <input type="search" id="search" placeholder="Search notes" autocomplete="off" disabled>
+        <p id="list-empty" class="list-empty" hidden></p>
+        <ul class="notes" id="notes"></ul>
+        <div class="sidebar-foot">
+          <button type="button" id="import" disabled>Import backup</button>
+          <button type="button" id="export" disabled>Export backup</button>
+          <input type="file" id="backup" accept=".json,application/json" hidden>
+        </div>
+      </aside>
+      <section class="editor" aria-label="Note editor" aria-busy="true">
+        <div id="empty" class="empty">
+          <h2 id="empty-title">Opening your notes</h2>
+          <p id="empty-hint">This can take a moment.</p>
+        </div>
+        <div id="document" class="document" hidden>
+          <div class="document-head">
+            <p id="modified"></p>
+            <button type="button" id="delete-note" class="danger">Delete note</button>
+          </div>
+          <label for="title" class="sr-only">Note title</label>
+          <input id="title" placeholder="Untitled note" autocomplete="off">
+          <label for="body" class="sr-only">Note body</label>
+          <textarea id="body" placeholder="Start writing…"></textarea>
+        </div>
+      </section>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+    <noscript>Enable JavaScript to open your notes.</noscript>
+  </body>
+</html>
